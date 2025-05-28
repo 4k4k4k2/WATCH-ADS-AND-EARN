@@ -1,66 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Watch Ads & Earn ₹10</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    text-align: center;
-    padding: 50px;
-  }
-  h1 {
-    color: #222;
-  }
-  button {
-    background-color: #ff5722;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 30px;
-  }
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  #message {
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    color: green;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Watch Ads & Earn ₹10</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 40px 30px;
+      text-align: center;
+      color: #fff;
+      max-width: 350px;
+      width: 90%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #ff6b6b;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+
+    .btn:hover:not(:disabled) {
+      background-color: #ff3d3d;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #ffffff55;
+      border-top: 5px solid #fff;
+      border-radius: 50%;
+      margin: 20px auto;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Watch Ads & Earn ₹10</h1>
-<p>Click the button below to watch an ad and earn ₹10!</p>
-<button id="watchAdBtn">Watch Ad</button>
+  <div class="card">
+    <h1>🎥 Watch Ads & Earn ₹10</h1>
+    <p>Click the button below to watch an ad and earn your reward.</p>
 
-<div id="message"></div>
+    <button class="btn" id="watchAdBtn">▶️ Watch Ad</button>
 
-<script>
-  const button = document.getElementById('watchAdBtn');
-  const message = document.getElementById('message');
+    <div class="loader" id="loader"></div>
+    <div id="message"></div>
+  </div>
 
-  button.addEventListener('click', () => {
-    button.disabled = true;
-    message.style.color = 'black';
-    message.textContent = 'Watching ad... please wait 5 seconds';
+  <script>
+    const button = document.getElementById('watchAdBtn');
+    const loader = document.getElementById('loader');
+    const message = document.getElementById('message');
 
-    // Simulate watching ad for 5 seconds
-    setTimeout(() => {
-      message.style.color = 'green';
-      message.textContent = '🎉 Congrats! You earned ₹10.';
-      button.disabled = false;
-    }, 5000);
-  });
-</script>
+    button.addEventListener('click', () => {
+      button.disabled = true;
+      loader.style.display = 'block';
+      message.textContent = "Watching ad...";
+
+      // Simulate ad watching time
+      setTimeout(() => {
+        loader.style.display = 'none';
+        message.innerHTML = "🎉 Congrats! You earned <b>₹10</b>!";
+        button.disabled = false;
+      }, 5000);
+    });
+  </script>
 
 </body>
 </html>
