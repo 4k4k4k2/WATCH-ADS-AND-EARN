@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Watch Ads & Earn ₹10</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    text-align: center;
+    padding: 50px;
+  }
+  h1 {
+    color: #222;
+  }
+  button {
+    background-color: #ff5722;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 30px;
+  }
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  #message {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    color: green;
+  }
+</style>
+</head>
+<body>
+
+<h1>Watch Ads & Earn ₹10</h1>
+<p>Click the button below to watch an ad and earn ₹10!</p>
+<button id="watchAdBtn">Watch Ad</button>
+
+<div id="message"></div>
+
+<script>
+  const button = document.getElementById('watchAdBtn');
+  const message = document.getElementById('message');
+
+  button.addEventListener('click', () => {
+    button.disabled = true;
+    message.style.color = 'black';
+    message.textContent = 'Watching ad... please wait 5 seconds';
+
+    // Simulate watching ad for 5 seconds
+    setTimeout(() => {
+      message.style.color = 'green';
+      message.textContent = '🎉 Congrats! You earned ₹10.';
+      button.disabled = false;
+    }, 5000);
+  });
+</script>
+
+</body>
+</html>
